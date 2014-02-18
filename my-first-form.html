@@ -1,3 +1,12 @@
+<?php>
+
+echo "<p>GET:</p>";
+var_dump($_GET);
+
+echo "<p>POST:</p>";
+var_dump($_POST);
+
+?>
 
 <!DOCTYPEHTML>
 <html>
@@ -5,6 +14,8 @@
 	<title>My First HTML Form</title>
 </head>
 <body>
+	<h3>User Login</h3>
+
 		<form method="POST" action="http://requestb.in/1j29m021">
 			<p>
 				<label for="username">Username</label>
@@ -19,6 +30,7 @@
 			</p>
 
 		<form>
+			<h3>Compose an Email</h3>
 
 			<p>
 				<label for="to">To</label>

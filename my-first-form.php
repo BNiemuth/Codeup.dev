@@ -61,7 +61,7 @@ var_dump($_POST);
 			<form>
 				<h3>Multiple Choice Test</h3>
 			
-			<p><p>What is the greatest Texas music act?</p>
+			<p>What is the greatest Texas music act?</p>
 				<label for="q1a">
 				    <input type="radio" id="q1a" name="q1" value="ZZ_Top">
 				    ZZ Top
@@ -79,6 +79,25 @@ var_dump($_POST);
 				    Janis Joplin
 				</label>
 			</p>
+			<p>
+				<label for="dog">What dog annoys you the most? </label>
+				<select id="dog" name="os[]" multiple>
+				    <option value="yapper">Ankle biting Yapper</option>
+				    <option value="bay">Spine Jaring Baying Hound</option>
+				    <option value="big">Snarling Big Dog</option>
+				</select>
+
+			</p>	
+			<h3>Select Testing</h3>
+			<p>
+				<label for="weather">Select your current Texas weather: </label>
+				<select id="weather" name="weather">
+	    		<option>Friggin' Hot (Blacktop melting)</option>
+	    		<option>Light Sleet (Shut down the highways)</option>
+	    		<option selected>Hot (A/C on high)</option>
+				</select>
+			</p>
+
 			</form>
 
 </body>

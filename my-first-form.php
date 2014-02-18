@@ -80,11 +80,12 @@ var_dump($_POST);
 				</label>
 			</p>
 			<p>
-				<label for="dog">What dog annoys you the most? </label>
+				<label for="dog">What annoys you the most? </label>
 				<select id="dog" name="os[]" multiple>
 				    <option value="yapper">Ankle biting Yapper</option>
 				    <option value="bay">Spine Jaring Baying Hound</option>
 				    <option value="big">Snarling Big Dog</option>
+				    <option value="cat">Any Cat</option>
 				</select>
 
 			</p>	

@@ -1,4 +1,4 @@
-<?php>
+<?php
 
 echo "<p>GET:</p>";
 var_dump($_GET);
@@ -16,7 +16,7 @@ var_dump($_POST);
 <body>
 	<h3>User Login</h3>
 
-		<form method="POST" action="http://requestb.in/1j29m021">
+		<form method="POST" action="">
 			<p>
 				<label for="username">Username</label>
 				<input id="username" name="username" type="text" placeholder="Enter your username">
@@ -29,6 +29,7 @@ var_dump($_POST);
 				<button type="submit" >Login</button>
 			</p>
 
+		</form>
 		<form>
 			<h3>Compose an Email</h3>
 
@@ -53,11 +54,32 @@ var_dump($_POST);
 				<label for="body">Body</label>
 				<textarea id="email_body" name="email_body" rows="7" cols="40" placeholder="Content Here"></textarea>
 			</p>
-			<p>
-				<button type="submit" >Send</button>
+			<p><label for="sent_folder">
+  				  <input type="checkbox" id="sent_folder" name="sent_folder" value="yes" checked> Save a copy to my sent folder
+				</label>
+			</form>
+			<form>
+				<h3>Multiple Choice Test</h3>
+			
+			<p><p>What is the greatest Texas music act?</p>
+				<label for="q1a">
+				    <input type="radio" id="q1a" name="q1" value="ZZ_Top">
+				    ZZ Top
+				</label>
+				<label for="q1b">
+				    <input type="radio" id="q1b" name="q1" value="Steve_Miller">
+				    Steve Miller
+				</label>
+				<label for="q1c">
+				    <input type="radio" id="q1c" name="q1" value="Buddy_Holly">
+				    Buddy Holly
+				</label>
+				<label for="q1d">
+				    <input type="radio" id="q1d" name="q1" value="Janis_Joplin">
+				    Janis Joplin
+				</label>
 			</p>
-
-
+			</form>
 
 </body>
 <html>	

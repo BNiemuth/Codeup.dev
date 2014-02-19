@@ -80,7 +80,7 @@ var_dump($_POST);
 				</label>
 			</p>
 			<p>
-				<label for="dog">What annoys you the most? </label>
+				<label for="dog">What pet annoys you the most? </label>
 				<select id="dog" name="os[]" multiple>
 				    <option value="yapper">Ankle biting Yapper</option>
 				    <option value="bay">Spine Jaring Baying Hound</option>
@@ -93,7 +93,7 @@ var_dump($_POST);
 			<p>
 				<label for="weather">Select your current Texas weather: </label>
 				<select id="weather" name="weather">
-	    		<option>Friggin' Hot (Blacktop melting)</option>
+	    		<option>Blast Furnace (Blacktop melting)</option>
 	    		<option>Light Sleet (Shut down the highways)</option>
 	    		<option selected>Hot (A/C on high)</option>
 				</select>

@@ -11,7 +11,7 @@
 $filename = "data/todo_list.txt";
 $handle = fopen($filename, "r");
 $contents = fread($handle, filesize($filename));
-if(filesize > 0);
+if(filesize ($filename) > 0);
 
 //Explode with \n then fclose
 $contents_array = explode("\n", $contents);

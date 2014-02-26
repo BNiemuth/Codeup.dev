@@ -1,22 +1,13 @@
-<!DOCTYPE html>
-<html>
-<head>
-	<title>TODO List</title>
-</head>
-<body>
-	<h3>TODO List</h3>
-<ul>
 <?php
 
 $filename = "data/todo_list.txt";
+$archive_filename = "data/archive.txt";
 
 function openfile($filename){
 
 	if(filesize ($filename) > 0) {
 		$handle = fopen($filename, "r");
 		$contents = fread($handle, filesize($filename));
-
-		//Explode with \n then fclose
 		fclose($handle);
 
 		return explode("\n", $contents);
@@ -26,7 +17,6 @@ function openfile($filename){
 		return array();
 	}
 }
-
 function save_file($temp_array, $filename) {
 	$handle = fopen($filename, "w");
 	$save_list = implode ("\n", $temp_array);
@@ -35,15 +25,17 @@ function save_file($temp_array, $filename) {
 }
 
 $contents_array=openfile($filename);
+$archive_array=openfile($archive_filename);
 
 if(!empty($_POST) && $_POST ["todo_item"] !== ''){
-	array_push($contents_array, $_POST["todo_item"]);
+	array_push($contents_array,htmlspecialchars(strip_tags($_POST["todo_item"])));
 	save_file($contents_array, $filename);
 }
 	
 if (isset($_GET['remove'])) {
 	$key = $_GET["remove"];
-	// echo $key;
+	array_push($archive_array, $contents_array[$key]);
+	save_file($archive_array, $archive_filename);
 	unset($contents_array[$key]);
 	save_file($contents_array, $filename);
 	header("Location: todo-list.php");
@@ -64,10 +56,21 @@ if (count($_FILES) > 0 && $_FILES['file1']['error'] == 0) {
     save_file($contents_array, $filename);
 }
 
-foreach ($contents_array as $key => $value) {
+?>
+
+<!DOCTYPE html>
+<html>
+<head>
+	<title>TODO List</title>
+</head>
+<body>
+	<h3>TODO List</h3>
+<ul>
+
+<?php	
+	foreach ($contents_array as $key => $value) {
 	echo "<li>" . $value . " <a href = \"?remove=$key\">Remove item</a></li>";
 }
-
 ?>
 
 </ul>
@@ -77,6 +80,7 @@ foreach ($contents_array as $key => $value) {
 <p>
      <label for="todo_item">New todo item
      <input id="todo_item" name="todo_item" type="text" autofocus="autofocus">
+
     </p>
     <h3>Upload file</h3>
    <p>

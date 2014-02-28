@@ -5,33 +5,10 @@
 // echo "<p>POST:</p>";
 // var_dump($_POST);
 
+require_once 'address_data_store.php';
+
 $location = 'address_book.csv';
 $error_message = "";
-
-function read_csv($location) {
-	$handle = fopen($location, 'r');
-	$filesize = filesize($location);
-	if ($filesize > 0) {
-		while(($data = fgetcsv($handle)) !==FALSE) {
-			$contents[] = $data;
-		}
-
-	} else {
-		$contents = [];
-	}
-	fclose($handle);
-	return $contents;
-}
-
-function save_csv($array, $location){
-	$handle = fopen($location, 'w');
-
-	foreach ($array as $fields) {
-	    fputcsv($handle, $fields);
-	}
-
-	fclose($handle);
-}
 
 function add_address($address_book, &$error_message){
 	$temp = $_POST;
@@ -52,15 +29,23 @@ function add_address($address_book, &$error_message){
 // 	echo "Name field is not empty";
 // }
 
-$address_book = read_csv ($location);
+$dataStore = new AddressDataStore($location);
+
+$address_book = $dataStore->read_csv();
 
 if (!empty($_POST)) {
 	$address_book=add_address($address_book, $error_message);
 }
 
+if (isset($_GET['remove'])) {
+	$key = $_GET['remove'];
+
+	unset($address_book[$key]);
+}
+
 // Add new entry to address_book
 
-save_csv($address_book,$location);
+$dataStore->save_csv($address_book);
 
 ?>
 

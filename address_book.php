@@ -27,7 +27,6 @@ class AddressDataStore extends Filestore {
     {
         // TODO: refactor to use new write_csv() method
     }
-
 }
 
 require_once 'address_data_store.php';

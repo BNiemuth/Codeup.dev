@@ -5,6 +5,31 @@
 // echo "<p>POST:</p>";
 // var_dump($_POST);
 
+//TODO: require Filestore class
+
+class AddressDataStore extends Filestore {
+
+    // TODO: Remove this, now using parent!
+    public $filename = '';
+
+    // TODO: Remove this, now using parent!
+    function __construct($filename) 
+    {
+
+    }
+
+    function read_address_book()
+    {
+        // TODO: refactor to use new $this->read_csv() method
+    }
+
+    function write_address_book($addresses_array) 
+    {
+        // TODO: refactor to use new write_csv() method
+    }
+
+}
+
 require_once 'address_data_store.php';
 
 $location = 'address_book.csv';
@@ -65,7 +90,7 @@ $dataStore->save_csv($address_book);
 				<?= $item; ?>
 			</td>
 			<? } ?>
-			<td><a href="?remove=<?=$key?>">Remove item</a></td>
+			<td><a href="?remove=<?=$key?>">  &#10008;</a></td>
 		</tr>
 	<? } ?>
 </table>

@@ -1,43 +1,45 @@
 <?php
+require_once("filestore.php");
 
-$filename = "data/todo_list.txt";
-$archive_filename = "data/archive.txt";
+$todo = new Filestore("data/todo_list.txt");
+$archive = new Filestore("data/archive.txt");
 
-function openfile($filename){
 
-	if(filesize ($filename) > 0) {
-		$handle = fopen($filename, "r");
-		$contents = fread($handle, filesize($filename));
-		fclose($handle);
+// function openfile($filename){
 
-		return explode("\n", $contents);
-	}
-	else
-	{
-		return array();
-	}
-}
-function save_file($temp_array, $filename) {
-	$handle = fopen($filename, "w");
-	$save_list = implode ("\n", $temp_array);
-	fwrite($handle, $save_list);
-	fclose($handle);
-}
+// 	if(filesize ($filename) > 0) {
+// 		$handle = fopen($filename, "r");
+// 		$contents = fread($handle, filesize($filename));
+// 		fclose($handle);
 
-$contents_array=openfile($filename);
-$archive_array=openfile($archive_filename);
+// 		return explode("\n", $contents);
+// 	}
+// 	else
+// 	{
+// 		return array();
+// 	}
+// }
+// function save_file($temp_array, $filename) {
+// 	$handle = fopen($filename, "w");
+// 	$save_list = implode ("\n", $temp_array);
+// 	fwrite($handle, $save_list);
+// 	fclose($handle);
+// }
+
+$contents_array = $todo->read_lines();
+$archive_array = $archive->read_lines();
 
 if(!empty($_POST) && $_POST ["todo_item"] !== ''){
 	array_push($contents_array,htmlspecialchars(strip_tags($_POST["todo_item"])));
-	save_file($contents_array, $filename);
+	$todo->write_lines($contents_array);
 }
 	
 if (isset($_GET['remove'])) {
 	$key = $_GET["remove"];
 	array_push($archive_array, $contents_array[$key]);
-	save_file($archive_array, $archive_filename);
+	$archive->write_lines($archive_array);
 	unset($contents_array[$key]);
-	save_file($contents_array, $filename);
+	$todo->write_lines($contents_array);
 	header("Location: todo-list.php");
 	exit(0);
 }
@@ -51,9 +53,10 @@ if (count($_FILES) > 0 && $_FILES['file1']['error'] == 0) {
     $saved_filename = $upload_dir . $temp_file;
     // Move the file from the temp location to our uploads directory
     move_uploaded_file($_FILES['file1']['tmp_name'], $saved_filename);
-    $append_list = openfile($saved_filename);
+    $newfile = new Filestore($saved_filename);
+    $append_list = $newfile->read_lines();
     $contents_array = array_merge ($contents_array, $append_list);
-    save_file($contents_array, $filename);
+    $todo->write_lines($contents_array);
 }
 
 ?>

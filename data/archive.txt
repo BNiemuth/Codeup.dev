@@ -1,18 +1,2 @@
-aaa
 Water the dog
-Null
-winfdow.location = http://google.com
-Hello!
-Hello!
-aaa
-bbb
-ccc
-Ima
-Gonna
-Doit
-Ima
-Gonna
-Doit
-AAA
-BBB
-CCC
+Milk the chicken

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+
+	<script>
+
+// todo:
+// Create person object with firstperson and lastperson properties (set to your first and last person).
+// var person = todo;
+
+	var person = new Object();
+	person.firstname = "Lisa";
+	person.lastname = "Niemuth";
+
+// todo:
+// Add a say hello method to the person object that alerts hello using the firstperson and lastperson properties.
+
+	person.sayHello = function() {
+		alert("Hello " + this.firstname + " " + this.lastname);
+	}
+
+// Say hello from the person object.
+
+	person.sayHello();
+
+	</script>
+</body>
+</html>

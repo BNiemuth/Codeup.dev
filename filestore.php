@@ -2,7 +2,6 @@
 
 class Filestore {
 
-
     public $filename = '';
 
     // private $is_csv = FALSE;

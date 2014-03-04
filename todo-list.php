@@ -1,9 +1,9 @@
 <?php
+
 require_once("filestore.php");
 
 $todo = new Filestore("data/todo_list.txt");
 $archive = new Filestore("data/archive.txt");
-
 
 // function openfile($filename){
 

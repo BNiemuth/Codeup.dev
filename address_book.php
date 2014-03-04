@@ -1,64 +1,16 @@
 <?php
-// echo "<p>GET:</p>";
-// var_dump($_GET);
-
-// echo "<p>POST:</p>";
-// var_dump($_POST);
-
-//TODO: require Filestore class
-
-class AddressDataStore extends Filestore {
-
-    // TODO: Remove this, now using parent!
-    public $filename = '';
-
-    // TODO: Remove this, now using parent!
-    function __construct($filename) 
-    {
-
-    }
-
-    function read_address_book()
-    {
-        // TODO: refactor to use new $this->read_csv() method
-    }
-
-    function write_address_book($addresses_array) 
-    {
-        // TODO: refactor to use new write_csv() method
-    }
-}
 
 require_once 'address_data_store.php';
 
 $location = 'address_book.csv';
 $error_message = "";
 
-function add_address($address_book, &$error_message){
-	$temp = $_POST;
-	if ($temp['customer_name'] == '' || ['customer_address'] == '' || ['customer_city'] == '' ||
-	['customer_state'] == '' || ['customer_zip'] == '') {
-		$error_message = '** It looks like you left something blank.** :(';
-
-	} else {
-		$address_book[] = $temp;
-	}
-	return $address_book;
-}
-
-// check for empty fields
-// if (empty($_POST['name'])) {
-// 	echo "Name field is empty";
-// } else {
-// 	echo "Name field is not empty";
-// }
-
 $dataStore = new AddressDataStore($location);
 
 $address_book = $dataStore->read_csv();
 
 if (!empty($_POST)) {
-	$address_book=add_address($address_book, $error_message);
+	$address_book = $dataStore->add_address($address_book, $error_message);
 }
 
 if (isset($_GET['remove'])) {
@@ -67,9 +19,7 @@ if (isset($_GET['remove'])) {
 	unset($address_book[$key]);
 }
 
-// Add new entry to address_book
-
-$dataStore->save_csv($address_book);
+$dataStore->write_csv($address_book);
 
 ?>
 
@@ -89,7 +39,7 @@ $dataStore->save_csv($address_book);
 				<?= $item; ?>
 			</td>
 			<? } ?>
-			<td><a href="?remove=<?=$key?>">  &#10008;</a></td>
+			<td><a href="?remove=<?=$key?>">&nbsp;&#10008;</a></td>
 		</tr>
 	<? } ?>
 </table>

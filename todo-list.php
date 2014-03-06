@@ -64,10 +64,13 @@ if (count($_FILES) > 0 && $_FILES['file1']['error'] == 0) {
 <!DOCTYPE html>
 <html>
 <head>
-	<title>TODO List</title>
+
+	<title>ToDo Stuff</title>
+	<link rel="stylesheet" href="/css/site.css">
 </head>
 <body>
-	<h3>TODO List</h3>
+
+	<h3 style="color:blue;text-decoration:underline;">TODO List</h3>
 <ul>
 
 <?php	

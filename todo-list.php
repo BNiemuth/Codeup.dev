@@ -1,40 +1,33 @@
 <?php
 
-require_once("filestore.php");
+var_dump($_GET);
+var_dump($_POST);
 
-$todo = new Filestore("data/todo_list.txt");
-$archive = new Filestore("data/archive.txt");
+// (host, user, password, database_name)
+$mysqli = new mysqli('127.0.0.1', 'codeup', 'password', 'ToDo_list');
 
-// function openfile($filename){
+if ($mysqli->connect_errno) 
+{
+    throw new Exception('Failed to connect to MySQL: (' . $mysqli->connect_errno . ') ' . $mysqli->connect_error);
+}
 
-// 	if(filesize ($filename) > 0) {
-// 		$handle = fopen($filename, "r");
-// 		$contents = fread($handle, filesize($filename));
-// 		fclose($handle);
+// require_once("filestore.php");
 
-// 		return explode("\n", $contents);
-// 	}
-// 	else
-// 	{
-// 		return array();
-// 	}
-// }
-// function save_file($temp_array, $filename) {
-// 	$handle = fopen($filename, "w");
-// 	$save_list = implode ("\n", $temp_array);
-// 	fwrite($handle, $save_list);
-// 	fclose($handle);
-// }
+// $todo = new Filestore("data/todo_list.txt");
+// $archive = new Filestore("data/archive.txt");
 
-$contents_array = $todo->read_lines();
-$archive_array = $archive->read_lines();
+// $contents_array = $todo->read_lines();
+// $archive_array = $archive->read_lines();
 
-if(!empty($_POST) && $_POST ["todo_item"] !== ''){
-	array_push($contents_array,htmlspecialchars(strip_tags($_POST["todo_item"])));
-	$todo->write_lines($contents_array);
+if (!empty($_POST) && $_POST ["todo_item"] !== '')
+{
+    $new_task = $mysqli->prepare("INSERT INTO todo(task) values (?)");
+    $new_task->bind_param("s", $_POST['task']);
+    $new_task->execute();
 }
 	
-if (isset($_GET['remove'])) {
+if (isset($_GET['remove'])) 
+{
 	$key = $_GET["remove"];
 	array_push($archive_array, $contents_array[$key]);
 	$archive->write_lines($archive_array);
@@ -44,7 +37,8 @@ if (isset($_GET['remove'])) {
 	exit(0);
 }
 
-if (count($_FILES) > 0 && $_FILES['file1']['error'] == 0) {
+if (count($_FILES) > 0 && $_FILES['file1']['error'] == 0) 
+{
     // Set the destination directory for uploads
     $upload_dir = '/vagrant/sites/codeup.dev/public/uploads/';
     // Grab the filename from the uploaded file by using basename
@@ -70,7 +64,7 @@ if (count($_FILES) > 0 && $_FILES['file1']['error'] == 0) {
 </head>
 <body>
 
-	<h3 style="color:blue;text-decoration:underline;">TODO List</h3>
+	<h3 style="color:blue;text-decoration:underline;">ToDo List</h3>
 <ul>
 
 <?php	

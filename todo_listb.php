@@ -1,8 +1,7 @@
 <?php
  
 // var_dump($_GET);
- 
-// var_dump($_POST);
+ // var_dump($_POST);
  
 $errorMessage = null;
 $successMessage = null;
@@ -15,8 +14,7 @@ if ($mysqli->connect_errno)
 {
     throw new Exception('Failed to connect to MySQL: (' . $mysqli->connect_errno . ') ' . $mysqli->connect_error);
 }
- 
-if (!empty($_POST))
+ if (!empty($_POST))
 {
 	// check for new todo
 	if (isset($_POST['todo']))
@@ -48,8 +46,7 @@ if (!empty($_POST))
 		$successMessage = "Todo item was removed successfully.";
 	}
 }
- 
-$itemsPerPage = 2;
+$itemsPerPage = 10;
 $currentPage = !empty($_GET['page']) && is_numeric($_GET['page']) ? intval($_GET['page']) : 1;
 $offset = ($currentPage - 1) * $itemsPerPage;
  
@@ -111,30 +108,27 @@ $nextPage = $currentPage < $maxPage ? $currentPage + 1 : null;
 	<form class="form-inline" role="form" action="todo_listb.php" method="POST">
 		<div class="form-group">
 			<label class="sr-only" for="todo">Todo Item</label>
-			<input type="text" name="todo" id="todo" class="form-control" placeholder="Enter todo item">
+			<input type="text" name="todo" id="todo" class="form-control" placeholder="Enter todo item" autofocus="autofocus">
 		</div>
 		<button type="submit" class="btn btn-default">Add Todo</button>
 	</form>
- 
 </div>
  
 <form id="removeForm" action="todo_listb.php" method="post">
 	<input id="removeId" type="hidden" name="remove" value="">
 </form>
- 
 <script>
-	
 	var form = document.getElementById('removeForm');
 	var removeId = document.getElementById('removeId');
  
-	function removeById(id) {
-		if (confirm('Are you sure you want to remove item ' + id + '?')) {
+	function removeById(id) 
+	{
+		if (confirm('Are you sure you want to remove item # ' + id + '?')) 
+		{
 			removeId.value = id;
 			form.submit();
 		}
 	}
- 
-</script>
- 
-</body>
+ </script>
+ </body>
 </html>

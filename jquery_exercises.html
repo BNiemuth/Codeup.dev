@@ -1,0 +1,54 @@
+<html>
+<head>
+	<title>Codeup</title>
+	
+	<div class="important">
+      <h1>What I've learned at CodeUp</h1>
+    <style>
+    .important {
+    	text-align: center;
+    }
+
+    </style>
+
+	 <script src="/js/jquery.js"></script>
+
+</head>
+<body>
+    </div>
+	<ul>
+
+    <strong>
+        <li>Fight for the user</li>
+        <li>The cake is a lie</li>
+        <li>Star Trek sucks</li>
+        <li>Han shot first</li>
+   		<li>The Delorean is tempermental</li>
+   	</strong>
+
+ 	</ul>
+ 	<p>Ice cream is good!
+ 	</p>
+ 	
+	<script src="bootstrap/js/JQuery.js"></script>
+	
+	<script>
+	
+	$('.important').click(function() {
+    alert('h1 with id "codeup" was clicked');
+	});
+	$('h1').click(function()	{
+		$(this).css('background-color', '#F00');
+	});
+	$('p').dblclick(function()	{
+		$(this).css('font-size', '18px');
+	});
+	$('li').hover(function()	{
+		$(this).css('color', '#F00');
+	},
+	function()	{
+		$(this).css('color', '#000');
+	});
+	</script>
+</body>
+</html>

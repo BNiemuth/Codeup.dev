@@ -1,0 +1,78 @@
+<html>
+<head>
+	<title>Whack A Mole!</title>
+	<script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+	<style>
+ 
+		#game-board {
+			margin: 10px auto;
+			width: 456px;
+		}
+ 
+		.mole-hole {
+			border: 1px solid black;
+			float: left;
+			height: 150px;
+			width: 150px;
+		}
+ 
+		img {
+			height: 150px;
+			width: 150px;
+			display: none;
+		}
+ 
+		body {
+			text-align: center;
+		}
+ 
+	</style>
+</head>
+<body>
+ 
+	<h1>Whack A Mole!</h1>
+ 
+	<div id="game-board">
+ 
+		<div class="mole-hole">
+			<img src="img/whack_a_mole.jpeg">
+		</div>
+		<div class="mole-hole">
+			<img src="img/whack_a_mole.jpeg">
+		</div>
+		<div class="mole-hole">
+			<img src="img/whack_a_mole.jpeg">
+		</div>
+ 
+		<div class="mole-hole">
+			<img src="img/whack_a_mole.jpeg">
+		</div>
+		<div class="mole-hole">
+			<img src="img/whack_a_mole.jpeg">
+		</div>
+		<div class="mole-hole">
+			<img src="img/whack_a_mole.jpeg">
+		</div>
+ 
+		<div class="mole-hole">
+			<img src="img/whack_a_mole.jpeg">
+		</div>
+		<div class="mole-hole">
+			<img src="img/whack_a_mole.jpeg">
+		</div>
+		<div class="mole-hole">
+			<img src="img/whack_a_mole.jpeg">
+		</div>
+ 
+	</div>
+ 
+	<script>
+
+	var holes = $('.mole-hole');
+		var rand = Math.floor(Math.random() * holes.length);
+		$(holes[rand]).children().fadeIn();
+ 
+	</script>
+ 
+</body>
+</html>

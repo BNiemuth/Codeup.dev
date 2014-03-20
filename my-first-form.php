@@ -1,10 +1,10 @@
 <?php
 
-echo "<p>GET:</p>";
-var_dump($_GET);
+// echo "<p>GET:</p>";
+// var_dump($_GET);
 
-echo "<p>POST:</p>";
-var_dump($_POST);
+// echo "<p>POST:</p>";
+// var_dump($_POST);
 
 ?>
 
@@ -19,7 +19,7 @@ var_dump($_POST);
 		<form method="POST" action="">
 			<p>
 				<label for="username">Username</label>
-				<input id="username" name="username" type="text" placeholder="Enter your username">
+				<input id="username" name="username" type="text" placeholder="Enter your username" autofocus="autofocus">
 			</p>
 			<p>
 				<label for="password">Password</label>
@@ -82,10 +82,10 @@ var_dump($_POST);
 			<p>
 				<label for="dog">What pet annoys you the most? </label>
 				<select id="dog" name="os[]" multiple>
-				    <option value="yapper">Ankle biting Yapper</option>
-				    <option value="bay">Spine Jaring Baying Hound</option>
-				    <option value="big">Snarling Big Dog</option>
-				    <option value="cat">Any Cat</option>
+				    <option value="yapper">Ankle biting yapper</option>
+				    <option value="bay">Spine jaring hound baying</option>
+				    <option value="big">Snarling big dog</option>
+				    <option value="cat">Any cat</option>
 				</select>
 
 			</p>	

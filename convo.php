@@ -25,7 +25,7 @@ class Conversation {
 
 // Create a new instance of Conversation
 $chat = new Conversation('Codeup');
-$talk = new Conversation('Bary');
+$talk = new Conversation('Barry');
 $convo = new Conversation('Ben');
 $speech = new Conversation();
 

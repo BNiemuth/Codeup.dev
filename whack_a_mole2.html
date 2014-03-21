@@ -67,11 +67,17 @@
 	</div>
  
 	<script>
-
 	var holes = $('.mole-hole');
+	setInterval(function() {
 		var rand = Math.floor(Math.random() * holes.length);
 		$(holes[rand]).children().fadeIn();
- 
+		
+		setTimeout(function(){
+			$(holes[rand]).children().fadeOut();
+		}, 1000);
+
+	},2000);
+
 	</script>
  
 </body>

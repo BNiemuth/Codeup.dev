@@ -9,7 +9,6 @@ class Conversation {
     {
         $this->name = $name;
     }
-
     // Method to say hello to name
     function say_hello($new_line = FALSE) 
     {
@@ -19,10 +18,7 @@ class Conversation {
         // Return the greeting, checking for newline
         return $new_line == TRUE ? "$greeting\n" : $greeting;
     }
-
 }
-
-
 // Create a new instance of Conversation
 $chat = new Conversation('Codeup');
 $talk = new Conversation('Barry');

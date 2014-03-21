@@ -95,7 +95,7 @@
 				<select id="weather" name="weather">
 	    		<option>Blast Furnace (Blacktop melting)</option>
 	    		<option>Light Sleet (Shut down the highways)</option>
-	    		<option selected>Hot (A/C on high)</option>
+	    		<option selected>Pretty Warm (A/C on high)</option>
 				</select>
 			</p>
 

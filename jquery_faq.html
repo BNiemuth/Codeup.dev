@@ -83,9 +83,20 @@
  	<script type="text/javascript">
  		$(document).ready(function() {
  			$('li').click(function() {
- 				$(this).parent().addClass('toggle');
+ 				$(this).parent().addClass('invisible'); 		
  			});
+ 		 
+
+    $('#national-parks-toggle').click(function() {
+        $('#national-parks').toggle();
+    });
+    $('#state-parks-texas-toggle').click(function() {
+        $('#state-parks-texas').toggle();
+  
+});
  		}):
+
+
  	</script>
 
 </body>

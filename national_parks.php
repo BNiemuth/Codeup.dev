@@ -24,7 +24,7 @@ $sortOrder = $_GET['sortOrder'];
 } else {
   $result = $mysqli->query("SELECT * FROM national_parks");
 }
-// var_dump ($_POST);
+var_dump ($_POST);
 ?>
 <html>
 <head>
